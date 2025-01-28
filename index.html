@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Script Hub</title>
+<!-- Link to Open Sans font from Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
+<script>
+function searchPendulums() {
+    let input = document.getElementById("searchBar").value.toLowerCase();
+    let category = document.getElementById("categorySelect").value.toLowerCase();
+    let rows = document.querySelectorAll(".table-container table");
+    rows.forEach(table => {
+        let found = false;
+        let cells = table.querySelectorAll("td");
+        let categoryText = table.querySelector(".category").innerText.toLowerCase();
+        let descriptionText = table.querySelector(".description").innerText.toLowerCase();
+        cells.forEach(cell => {
+            if (cell.innerText.toLowerCase().includes(input) && 
+                (category === "all" || categoryText.includes(category) || descriptionText.includes(category))) {
+                found = true;
+            }
+        });
+        table.style.display = found ? "block" : "none";
+    });
+}
+</script>
+
+<style>
+    body {
+        font-family: 'Open Sans', sans-serif; /* Apply Open Sans font to the body */
+    }
+    .table-container {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap; /* Allows tables to wrap on smaller screens */
+        max-width: 100%;
+        overflow: hidden;
+    }
+    table {
+        margin: 20px;
+        border: 1px solid #CCC;
+        font-size: 120%;
+        max-width: 100%;
+        box-sizing: border-box; /* Prevents overflow */
+        display: none; /* Hide all tables by default */
+    }
+    td {
+        padding: 10px;
+    }
+    img {
+        display: block;
+        max-width: 100%; /* Ensures images don't overflow */
+    }
+    input {
+        padding: 5px;
+        width: 300px;
+        font-size: 16px;
+    }
+    .tabs {
+        text-align: center;
+        margin: 20px 0;
+    }
+    .tab-links {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 0 5px;
+        background-color: #f1f1f1;
+        cursor: pointer;
+        font-weight: bold;
+    }
+    .tab-links:hover {
+        background-color: #ddd;
+    }
+    .category {
+        font-size: 80%;
+        color: #888;
+        display: block;
+        margin-top: 5px;
+    }
+    .description {
+        font-size: 80%;
+        color: #888;
+        display: block;
+        margin-top: 5px;
+    }
+    select {
+        padding: 5px;
+        font-size: 16px;
+        margin: 20px auto;
+        display: block;
+    }
+    footer {
+        text-align: center;
+        font-size: 14px;
+        color: #888;
+        margin-top: 40px;
+        padding: 20px 0;
+        border-top: 1px solid #CCC;
+    }
+    footer .copyright {
+        font-weight: bold;
+    }
+</style>
+</head>
+<body>
+<h1 style="text-align: center; margin-top: 20px;">my poop script hub</h1>
+
+<!-- Tab Navigation -->
+<div class="tabs">
+    <div class="tab-links" onclick="window.location.href='#'">Home</div>
+    <div class="tab-links" onclick="window.location.href='https://example.com'">Discord</div>
+    <div class="tab-links" onclick="window.location.href='https://example.com'">About Us</div>
+</div>
+
+<div style="text-align: center; margin-bottom: 20px;">
+    <input type="text" id="searchBar" placeholder="Search scripts..." onkeyup="searchPendulums()">
+</div>
+
+<!-- Category Dropdown -->
+<div style="text-align: center;">
+    <select id="categorySelect" onchange="searchPendulums()">
+        <option value="all">All Categories</option>
+        <option value="scripts for exploiters">Scripts for Exploiters</option>
+        <option value="scripts for developers">Scripts for Developers</option>
+    </select>
+</div>
+
+<div class="table-container">
+    <!-- Pendulum Simulation - Scripts for Exploiters -->
+
+      <table width="500">
+        <tr>
+            <td width="240"><img src="https://simpop.org/pendulum/thumb.png" style="display:block"></td>
+            <td>
+                <a href="https://simpop.org/pendulum/lakakaka.htm">the best script ever</a>
+                <span class="category">Category: Scripts for Exploiters</span>
+                <span class="description">Description: universial script i dunno</span>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<script>
+    // Initially show all tables
+    document.querySelectorAll(".table-container table").forEach(table => {
+        table.style.display = "block";
+    });
+</script>
+
+<!-- Footer -->
+<footer>
+    <p class="copyright">© my poop script hub 2025</p>
+</footer>
+
+</body>
+</html>
